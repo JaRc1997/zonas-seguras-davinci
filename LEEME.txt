@@ -1,0 +1,45 @@
+============================================================
+  ZONAS SEGURAS para DaVinci Resolve
+============================================================
+
+Coloca sobre tu video vertical (9:16) una GUIA con la interfaz real
+de cada red social (TikTok, Instagram Reels, YouTube Shorts y
+Facebook), para que sepas donde NO poner tus textos (porque la app
+los tapa con sus botones, la descripcion, la barra de estado, etc.).
+
+Es una guia para editar: la apagas o la borras antes de exportar.
+
+------------------------------------------------------------
+  COMO INSTALAR  (una sola vez)
+------------------------------------------------------------
+1. Descomprime esta carpeta en cualquier lugar de tu PC.
+2. Haz doble clic en:   Instalar.bat
+   (Si Windows muestra un aviso azul: "Mas informacion" ->
+    "Ejecutar de todas formas". Es normal.)
+3. Cierra y vuelve a abrir DaVinci Resolve.
+
+No necesitas instalar nada mas. Funciona en la version gratis.
+
+------------------------------------------------------------
+  COMO USAR
+------------------------------------------------------------
+1. Abre tu proyecto vertical (9:16, ej. 1080x1920) con el video
+   en la linea de tiempo.
+2. Menu:  Area de trabajo -> Secuencias de comandos ->
+   elige la red:  Zona Segura - TikTok / Reels / Shorts / Facebook
+3. Se creara una pista nueva "GUIA Zona Segura" con la interfaz
+   de esa red encima de tu video.
+4. Coloca tus textos, stickers y elementos en la zona libre
+   (el centro), lejos de los iconos.
+5. IMPORTANTE: cuando termines, APAGA esa pista (icono del ojo)
+   o borrala antes de exportar el video final.
+
+------------------------------------------------------------
+  NOTAS
+------------------------------------------------------------
+- Las guias estan hechas a 1080x1920 (9:16) y se adaptan a
+  cualquier timeline vertical con esa proporcion.
+- Puedes usar varias (por ejemplo, revisar TikTok y luego Shorts).
+  Cada vez se agrega una pista nueva; borra las que no uses.
+- Requisitos: Windows, DaVinci Resolve (gratis o Studio).
+============================================================
