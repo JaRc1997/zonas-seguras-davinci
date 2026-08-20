@@ -8,6 +8,13 @@ Es una GUIA para editar: desactiva o borra esa pista antes de exportar.
 """
 PLATAFORMA = "YouTube_Shorts"   # nombre del overlay (archivo PNG)
 
+# Transformacion del overlay al colocarlo (para que encaje sobre tu video).
+# Puedes cambiar estos valores; equivalen al Inspector -> Transformacion.
+ZOOM_X = 1.240
+ZOOM_Y = 1.040
+POS_X = 0.000
+POS_Y = -3.000
+
 import os
 import sys
 import json
@@ -93,9 +100,34 @@ def main():
         "trackIndex": idx,
         "recordFrame": inicio,
     }
-    ok = mp.AppendToTimeline([clip_info])
+    nuevos = mp.AppendToTimeline([clip_info])
+    ok = bool(nuevos)
 
     if ok:
+        # Obtener el clip colocado para aplicarle la transformacion
+        ti = None
+        if isinstance(nuevos, list) and nuevos:
+            ti = nuevos[0]
+        if ti is None:
+            try:
+                lst = timeline.GetItemListInTrack("video", idx)
+                ti = lst[-1] if lst else None
+            except Exception:
+                ti = None
+        if ti is not None:
+            try:
+                ti.SetProperty("ZoomGang", False)   # zoom X e Y independientes
+            except Exception:
+                pass
+            for clave, valor in (("ZoomX", ZOOM_X), ("ZoomY", ZOOM_Y),
+                                 ("Pan", POS_X), ("Tilt", POS_Y)):
+                try:
+                    ti.SetProperty(clave, valor)
+                except Exception as e:
+                    print("[guia] No pude fijar " + clave + ": " + str(e))
+            print("[guia] Transformacion aplicada (Zoom " + str(ZOOM_X) + "/" +
+                  str(ZOOM_Y) + ", PosY " + str(POS_Y) + ").")
+
         print("")
         print("[OK] Guia de " + PLATAFORMA + " colocada en la pista de video " + str(idx) + ".")
         print("     - Ajusta tus textos dentro de la zona libre (centro).")
